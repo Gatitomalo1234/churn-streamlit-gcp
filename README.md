@@ -244,7 +244,12 @@ El flujo es: `Dockerfile` → `docker build` → **imagen** → `docker run` →
 
 ## 12. Despliegue en Google Cloud (Compute Engine)
 
-1. **Crear la VM.** En Compute Engine, cree una instancia con Ubuntu 24.04 LTS, tamaño pequeño (por ejemplo e2-small) e IP externa. Agregue la etiqueta de red `streamlit-server`.
+1. **Crear la VM (dentro del nivel gratuito *Always Free*).** En Compute Engine → Crear instancia:
+   - **Región:** `us-central1` (Iowa), `us-west1` (Oregón) o `us-east1` (Carolina del Sur). En otra región la VM se cobra.
+   - **Tipo de máquina:** `e2-micro` (2 vCPU compartidas, 1 GB de RAM). Cualquier otro tipo se cobra.
+   - **Disco de arranque:** Ubuntu 24.04 LTS (x86/64), tipo **Disco persistente estándar** y 30 GB o menos. La consola propone por defecto un disco *balanceado*, que no entra en el nivel gratuito: hay que cambiarlo.
+   - **Redes:** IP externa *efímera* (no reservar una IP estática) y etiqueta de red `streamlit-server`.
+   - Una sola VM de este tipo por cuenta. Al terminar, detenerla o eliminarla.
 2. **Instalar Docker y Git.** Use el botón SSH de la consola:
 
    ```bash

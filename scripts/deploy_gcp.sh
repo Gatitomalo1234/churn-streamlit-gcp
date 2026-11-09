@@ -15,6 +15,17 @@ IMAGE="ml-streamlit-app"
 CONTAINER="ml-streamlit"
 PORT=8501
 
+# La e2-micro gratuita tiene 1 GB de RAM: se agrega 2 GB de swap para que
+# la instalación de dependencias durante docker build no se quede sin memoria.
+if [ "$(free -m | awk '/^Mem:/{print $2}')" -lt 2000 ] && ! swapon --show | grep -q /swapfile; then
+  echo "==> 0/5 Creando swap de 2 GB (VM con poca RAM)"
+  sudo fallocate -l 2G /swapfile
+  sudo chmod 600 /swapfile
+  sudo mkswap /swapfile >/dev/null
+  sudo swapon /swapfile
+  grep -q '^/swapfile' /etc/fstab || echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab >/dev/null
+fi
+
 echo "==> 1/5 Instalando Docker y Git (si faltan)"
 if ! command -v docker >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1; then
   sudo apt-get update -y
