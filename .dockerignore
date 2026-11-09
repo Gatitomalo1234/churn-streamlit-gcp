@@ -1,0 +1,14 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+.ipynb_checkpoints
+notebooks
+.env
+*.log
+*.zip
+
+# Material del repositorio que no necesita la imagen
+docs
+scripts

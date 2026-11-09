@@ -1,0 +1,51 @@
+{
+  "modelo_seleccionado": "logistic_regression",
+  "regla_seleccion": "Mayor ROC-AUC CV; logística si queda a <= 0.01 del mejor",
+  "test_umbral_elegido": {
+    "threshold": 0.3251,
+    "roc_auc": 0.8394,
+    "recall_churn": 0.7139,
+    "precision_churn": 0.5361,
+    "f1_churn": 0.6124,
+    "f1_weighted": 0.7695,
+    "brier": 0.1391,
+    "prob_media_predicha": 0.2678,
+    "tasa_real": 0.2654,
+    "accuracy": 0.7601,
+    "confusion_matrix": [
+      [
+        804,
+        231
+      ],
+      [
+        107,
+        267
+      ]
+    ]
+  },
+  "test_umbral_0_5": {
+    "threshold": 0.5,
+    "roc_auc": 0.8394,
+    "recall_churn": 0.5535,
+    "precision_churn": 0.6409,
+    "f1_churn": 0.594,
+    "f1_weighted": 0.7942,
+    "brier": 0.1391,
+    "prob_media_predicha": 0.2678,
+    "tasa_real": 0.2654,
+    "accuracy": 0.7991,
+    "confusion_matrix": [
+      [
+        919,
+        116
+      ],
+      [
+        167,
+        207
+      ]
+    ]
+  },
+  "n_train": 5634,
+  "n_test": 1409,
+  "tasa_churn": 0.2654
+}

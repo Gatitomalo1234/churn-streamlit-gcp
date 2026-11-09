@@ -1,0 +1,10 @@
+caso,tenure,MonthlyCharges,SeniorCitizen,Partner,Dependents,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,esperado_prob,esperado_clase
+1_valores_por_defecto,29,70.35,0,No,No,No,No,DSL,No,No,No,No,No,No,Month-to-month,No,Bank transfer (automatic),25.8%,No churn
+2_alto_riesgo,2,95.0,1,No,No,No,No,Fiber optic,No,No,No,No,No,No,Month-to-month,No,Electronic check,78.5%,Churn
+3_cliente_fiel,60,55.0,0,Yes,Yes,No,No,DSL,Yes,No,No,Yes,No,No,Two year,No,Credit card (automatic),0.9%,No churn
+4_sin_internet,24,20.0,0,No,No,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,4.8%,No churn
+5_frontera_20_meses,20,70.35,0,No,No,No,No,DSL,No,No,No,No,No,No,Month-to-month,No,Bank transfer (automatic),32.1%,No churn
+6_frontera_18_meses,18,70.35,0,No,No,No,No,DSL,No,No,No,No,No,No,Month-to-month,No,Bank transfer (automatic),33.6%,Churn
+7_extremo_minimo,0,18.25,0,No,No,No,No,DSL,No,No,No,No,No,No,Month-to-month,No,Bank transfer (automatic),35.2%,Churn
+8_extremo_maximo,72,118.75,0,No,No,Yes,Yes,Fiber optic,No,No,No,No,Yes,Yes,Two year,No,Bank transfer (automatic),7.6%,No churn
+9_alto_riesgo_con_contrato_2_anios,2,95.0,1,No,No,No,No,Fiber optic,No,No,No,No,No,No,Two year,No,Electronic check,48.9%,Churn

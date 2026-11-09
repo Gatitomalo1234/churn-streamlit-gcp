@@ -1,0 +1,9 @@
+# Versiones fijadas: el model.joblib debe cargarse con la misma versión de
+# scikit-learn con la que se entrenó (1.9.1).
+streamlit==1.66.1
+pandas==3.0.5
+numpy==2.5.3
+scikit-learn==1.9.1
+joblib==1.6.0
+openpyxl==3.1.5  # lectura/escritura de Excel en la carga masiva
+plotly==6.3.0     # gauge y gráfico de factores en la app

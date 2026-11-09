@@ -1,0 +1,4 @@
+modelo,cv_roc_auc_mean,cv_roc_auc_std,train_roc_auc_mean,cv_recall_mean,cv_recall_std,train_recall_mean,cv_precision_mean,cv_precision_std,train_precision_mean,cv_f1_mean,cv_f1_std,train_f1_mean,cv_accuracy_mean,cv_accuracy_std,train_accuracy_mean
+logistic_regression,0.8452,0.0121,0.8482,0.5385,0.0415,0.5473,0.6529,0.0274,0.6628,0.5894,0.0289,0.5995,0.8014,0.0114,0.806
+random_forest,0.8431,0.0083,0.9238,0.499,0.0223,0.6105,0.6731,0.0347,0.7797,0.5728,0.0231,0.6848,0.8025,0.0115,0.8509
+hist_gradient_boosting,0.8418,0.0087,0.9232,0.5251,0.0242,0.6319,0.6564,0.0282,0.7704,0.5831,0.0222,0.6942,0.8009,0.0106,0.8523
