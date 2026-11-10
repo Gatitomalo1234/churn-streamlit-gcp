@@ -7,6 +7,11 @@
 
 **Repositorio:** https://github.com/Gatitomalo1234/churn-streamlit-gcp
 
+## Ver la aplicación
+
+- **Demo en línea (siempre disponible):** https://churn-app-gcp.streamlit.app/ — misma app, mismo modelo, desplegada en Streamlit Community Cloud desde este repositorio.
+- **Despliegue en Google Cloud (entregable del curso):** la app se desplegó con Docker en una VM de Compute Engine y funcionó en `http://35.208.96.179:8501` (ver [evidencias](docs/evidencias/)). Para no generar costos, **la VM se mantiene apagada**. Si desea verla corriendo en GCP, escríbanos y la encendemos; la IP externa cambia en cada encendido, así que compartiremos el link nuevo en ese momento.
+
 ![App: simulador con un cliente de alto riesgo](docs/capturas/app_alto_riesgo.png)
 
 **Inicio rápido en una VM de Google Cloud** (Ubuntu 24.04, con el puerto 8501 abierto; ver sección 12):
@@ -21,7 +26,7 @@ curl -fsSL https://raw.githubusercontent.com/Gatitomalo1234/churn-streamlit-gcp/
 
 Estimar la probabilidad de que un cliente cancele su servicio (*churn*) a partir de su contrato, sus servicios contratados y su forma de pago. La salida permite priorizar acciones de retención sobre los clientes de mayor riesgo.
 
-La solución cubre el ciclo completo: datos → `train.py` → `model.joblib` → app Streamlit → imagen Docker → VM en Google Cloud.
+La solución cubre el ciclo completo: datos → `train.py` → `model.joblib` → app Streamlit → imagen Docker → VM en Google Cloud, con una copia pública en Streamlit Community Cloud.
 
 ## 2. Dataset
 
@@ -286,6 +291,23 @@ curl -fsSL https://raw.githubusercontent.com/Gatitomalo1234/churn-streamlit-gcp/
 
 Para actualizar tras un cambio en el repositorio, basta con ejecutar el mismo comando otra vez.
 
+### Estado del despliegue
+
+- **Fecha:** 9 de noviembre de 2026.
+- **VM:** `churn-streamlit-vm` · e2-micro · `us-central1-c` · Ubuntu 24.04 · disco estándar de 20 GB (nivel gratuito *Always Free*).
+- **Resultado:** `deploy_gcp.sh` construyó la imagen `ml-streamlit-app`, el contenedor `ml-streamlit` quedó *Up* con `0.0.0.0:8501->8501/tcp` y la app abrió desde la IP externa `35.208.96.179`. Capturas en [`docs/evidencias/`](docs/evidencias/).
+- **Ahora:** VM detenida para evitar costos. Al encenderla, el contenedor arranca solo (`--restart unless-stopped`) y la app queda en `http://NUEVA_IP_EXTERNA:8501`.
+
+### Alternativa: Streamlit Community Cloud
+
+Para tener un link permanente sin mantener la VM encendida, la misma app está publicada en https://churn-app-gcp.streamlit.app/:
+
+1. En share.streamlit.io, iniciar sesión con GitHub → **Create app**.
+2. Repositorio `Gatitomalo1234/churn-streamlit-gcp`, rama `main`, archivo `app.py`.
+3. En *Advanced settings*, Python **3.12** (la misma versión de la imagen Docker).
+
+Cada push a `main` actualiza la app automáticamente. Si nadie la abre en varios días, Streamlit la suspende y se reactiva con un clic.
+
 **Actualizar después de cambios:**
 
 ```bash
@@ -352,19 +374,10 @@ Muestra que el modelo también se equivoca, como indica su matriz de confusión.
 | El contenedor se detiene | `docker ps -a` y `docker logs ml-streamlit` |
 | Funciona en la VM pero no desde afuera | Revise la regla de firewall, la etiqueta `streamlit-server` y la IP externa |
 
-## 15. Prueba cruzada
+## 15. Evidencias
 
-Otra pareja reprodujo el proyecto usando solo este README. _(Completar tras la prueba.)_
+Las capturas del despliegue (build, contenedor, firewall y app con IP externa) están en [`docs/evidencias/`](docs/evidencias/), con la lista de verificación de cada criterio de la rúbrica.
 
-- **Pareja evaluadora:** _[nombres]_
-- **Fecha:** _[dd/mm/aaaa]_
-- **¿Clonó el repositorio sin ayuda?** _[Sí / No]_
-- **¿Construyó la imagen con `docker build`?** _[Sí / No — error encontrado]_
-- **¿Ejecutó el contenedor y abrió la app?** _[Sí / No — en local o en VM]_
-- **Caso probado y resultado obtenido:** _[por ejemplo, alto riesgo → 78,5% · Churn]_
-- **Instrucciones faltantes o confusas:** _[...]_
-- **Ajustes que hicimos al README después de la prueba:** _[...]_
-
-## 16. Evidencias
-
-Las capturas del despliegue (build, contenedor, firewall, app con IP externa y prueba cruzada) están en [`docs/evidencias/`](docs/evidencias/), con la lista de verificación de cada criterio de la rúbrica.
+| `docker build` y contenedor activo en la VM | App abierta desde la IP externa de GCP |
+|---|---|
+| ![docker build y docker ps](docs/evidencias/02_docker_build_y_ps.png) | ![App en GCP](docs/evidencias/06_app_ip_externa.png) |
